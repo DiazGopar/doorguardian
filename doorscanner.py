@@ -21,7 +21,7 @@ class ProcessInput(serial.threaded.LineReader):
     way = True
     #TERMINATOR = b'\r\n'
     
-    def add_callback(self, callback: callable):
+    def set_callback(self, callback: callable):
         self.cb = callback
 
     def set_way(self, value):
@@ -30,7 +30,7 @@ class ProcessInput(serial.threaded.LineReader):
     def connection_made(self, transport):
         super(ProcessInput, self).connection_made(transport)
         log.debug('port opened')
-        
+
     def handle_line(self, data):
         log.debug('Data: {}'.format(repr(data)))
         #print(self.transport.getName())
@@ -76,10 +76,10 @@ def func2(data):
     return True
 
 with serial.threaded.ReaderThread(ser, ProcessInput) as protocol1:
-    protocol1.add_callback(func)
+    protocol1.set_callback(func)
     protocol1.set_way(parameters.CONFIG_SYSTEM["scanner1"]["way"])
     with serial.threaded.ReaderThread(ser2, ProcessInput) as protocol2:
-        protocol2.add_callback(func2)
+        protocol2.set_callback(func2)
         protocol2.set_way(parameters.CONFIG_SYSTEM["scanner2"]["way"])
         while True:
             time.sleep(1)
