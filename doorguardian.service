@@ -1,0 +1,18 @@
+[Unit]
+Description=Door management for weappfit
+After=syslog.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/doorscanner.py
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=doorguardian
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
