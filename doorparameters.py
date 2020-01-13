@@ -29,7 +29,7 @@ CONFIG_SYSTEM = {
         "open_code"   : CODE_DOOR_1_OPEN,
         "close_code"  : CODE_DOOR_1_OPEN,
         "way"         : True #'''True: WayIN'''
-    },  
+    },
     "scanner2" : {
         "port"        : OUT_SCANNER,
         "dev_addr_op" : DEVICE_ADDR_DOOR_1_OPEN,

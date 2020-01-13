@@ -1,12 +1,10 @@
 import time as t
 import smbus
-import sys
 import subprocess
 import logging as log
 import doorparameters as parameters
 
 bus = smbus.SMBus(parameters.DEVICE_BUS)
-
 
 def openWay(scanner):
     """ openWay(scanner) giving a scanner, send a signal through i2c to act with the door
@@ -20,14 +18,11 @@ def openWay(scanner):
         )
         flag = 0 #to keep if all if correct
         t.sleep(parameters.WAIT_SECONDS_BLOCK_DOOR)
-    
     except IOError:
         # Log the event a call i2cdetect to restart i2c system
         log.error('I2c writing error')
         flag = 1
         subprocess.call(['i2cdetect', '-y', '1'])
-
-
     finally:
         try:
             if parameters.CONFIG_SYSTEM[scanner]["close_code"] != 0:

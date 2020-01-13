@@ -31,7 +31,6 @@ class ProcessInput(serial.threaded.LineReader):
         super(ProcessInput, self).connection_made(transport)
         log.debug('port opened')
         
-
     def handle_line(self, data):
         log.debug('Data: {}'.format(repr(data)))
         #print(self.transport.getName())
@@ -40,7 +39,7 @@ class ProcessInput(serial.threaded.LineReader):
         log.debug(response)
         if response:
             self.cb(response)
-        
+
         #print('line received: {}\n'.format(repr(data)))
         ##Call a function with Serial Number, User Code'''
 
