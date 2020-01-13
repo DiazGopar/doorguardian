@@ -2,7 +2,6 @@
 """ doorscanner stub file.
 This module process the serial scanner to send the readed information to Web Servies and act with doors.
 """
-import threading
 import serial
 import serial.threaded
 import time
@@ -22,7 +21,7 @@ class ProcessInput(serial.threaded.LineReader):
     way = True
     #TERMINATOR = b'\r\n'
     
-    def addCallback(self, callback: callable):
+    def add_callback(self, callback: callable):
         self.cb = callback
 
     def set_way(self, value):
@@ -46,6 +45,7 @@ class ProcessInput(serial.threaded.LineReader):
         ##Call a function with Serial Number, User Code'''
 
     def connection_lost(self, exc):
+        (self.way)
         if exc:
             print(exc)
             #traceback.print_exc(exc)
@@ -77,10 +77,10 @@ def func2(data):
     return True
 
 with serial.threaded.ReaderThread(ser, ProcessInput) as protocol1:
-    protocol1.addCallback(func)
+    protocol1.add_callback(func)
     protocol1.set_way(parameters.CONFIG_SYSTEM["scanner1"]["way"])
     with serial.threaded.ReaderThread(ser2, ProcessInput) as protocol2:
-        protocol2.addCallback(func2)
+        protocol2.add_callback(func2)
         protocol2.set_way(parameters.CONFIG_SYSTEM["scanner2"]["way"])
         while True:
             time.sleep(1)

@@ -1,4 +1,4 @@
-""" Connecting with WeAppFit API Service 
+""" Connecting with WeAppFit API Service
 """
 import requests
 import logging as log
@@ -20,7 +20,7 @@ def getWebResponse(code, way):
 	while num_retries > 0:
 		#print(num_retries)
 		num_retries -= 1
-		try: 	
+		try:
 			r = requests.post(url = parameters.API_ENDPOINT, data = data, timeout = parameters.URL_TIMEOUT)
 		except requests.Timeout:
 			log.warning('Web Request Timeout')
@@ -35,11 +35,10 @@ def getWebResponse(code, way):
 			response = r.text
 
 	# extracting response text
-	#response = r.text 
+	#response = r.text
 	log.debug("The Response is: %s"%response)
 	if response != "true":
 		response = False
-	
 	return response
 
 #print(getWebResponse(3220, True))
