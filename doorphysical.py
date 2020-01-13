@@ -2,7 +2,7 @@ import time as t
 import smbus
 import sys
 import subprocess
-import logging as log   
+import logging as log
 import doorparameters as parameters
 
 bus = smbus.SMBus(parameters.DEVICE_BUS)
@@ -28,7 +28,7 @@ def openWay(scanner):
         subprocess.call(['i2cdetect', '-y', '1'])
 
 
-    finally:    
+    finally:
         try:
             if parameters.CONFIG_SYSTEM[scanner]["close_code"] != 0:
                 bus.write_byte_data(
@@ -44,18 +44,14 @@ def openWay(scanner):
 
     return flag # 0 = correct, 1 = error
 
-
     #bus.write_byte_data(parameters.DEVICE_ADDR_DOOR_1_OPEN, door, parameters.ENABLE_DOOR)
     # delay enough to block the door again
     #t.sleep(parameters.WAIT_SECONDS_BLOCK_DOOR)
     #bus.write_byte_data(parameters.DEVICE_ADDR_DOOR_1_CLOSE, door , parameters.DISABLE_DOOR)
 
 
-
 ##openWay(parameters.CODE_DOOR_1_OPEN)
 ##openWay(parameters.CODE_DOOR_1_CLOSE)
 ##openWay(3)
 #openWay("scanner1")
-
 #subprocess.call(['i2cdetect', '-y', '1'])
-

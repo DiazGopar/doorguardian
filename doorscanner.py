@@ -54,10 +54,10 @@ class ProcessInput(serial.threaded.LineReader):
 
 #LOG related
 log.basicConfig(
-    format='%(asctime)s:%(levelname)s:%(name)s:%(message)s', 
+    format='%(asctime)s:%(levelname)s:%(name)s:%(message)s',
     #datefmt='%d-%b-%y %H:%M:%S',
-    #filename='app.log', 
-    #filemode='a', 
+    #filename='app.log',
+    #filemode='a',
     level=log.DEBUG)
 log.info('Iniciando DoorGuardian...')
 
@@ -84,5 +84,5 @@ with serial.threaded.ReaderThread(ser, ProcessInput) as protocol1:
         protocol2.set_way(parameters.CONFIG_SYSTEM["scanner2"]["way"])
         while True:
             time.sleep(1)
-    
+
 log.info('Saliendo de DoorGuardian.')

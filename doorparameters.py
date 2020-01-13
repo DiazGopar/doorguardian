@@ -23,18 +23,18 @@ NO_DEVICE_ADDR = 0x00
 '''Door Logic'''
 CONFIG_SYSTEM = {
     "scanner1" : {
-        "port"        : IN_SCANNER, 
-        "dev_addr_op" : DEVICE_ADDR_DOOR_1_OPEN, 
-        "dev_addr_cl" : DEVICE_ADDR_DOOR_1_CLOSE, 
+        "port"        : IN_SCANNER,
+        "dev_addr_op" : DEVICE_ADDR_DOOR_1_OPEN,
+        "dev_addr_cl" : DEVICE_ADDR_DOOR_1_CLOSE,
         "open_code"   : CODE_DOOR_1_OPEN,
         "close_code"  : CODE_DOOR_1_OPEN,
         "way"         : True #'''True: WayIN'''
     },  
     "scanner2" : {
-        "port"        : OUT_SCANNER, 
-        "dev_addr_op" : DEVICE_ADDR_DOOR_1_OPEN, 
-        "dev_addr_cl" : DEVICE_ADDR_DOOR_1_CLOSE, 
-        "open_code"   : CODE_DOOR_1_OPEN, 
+        "port"        : OUT_SCANNER,
+        "dev_addr_op" : DEVICE_ADDR_DOOR_1_OPEN,
+        "dev_addr_cl" : DEVICE_ADDR_DOOR_1_CLOSE,
+        "open_code"   : CODE_DOOR_1_OPEN,
         "close_code"  : CODE_DOOR_1_OPEN,
         "way"         : False #'''False: WayOut'''
     }
